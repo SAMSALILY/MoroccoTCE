@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Airport Taxes Charter/PAX Flight </title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,600" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+
+<!-- START CONTAINER AIRPORT TAXES -->
+
+<div class="container">
+	<button id="back-charter" type="button" class="btn btn-primary" onclick=window.history.back()><< B a c k </button>
+	
+  <h2 align="center"> CHARTER/PAX FLIGHT </h2>
+</div>
+
+<h3 id="quotation" style="text-align:center"> </h3>
+
+<div id="margin-top-table" style="display: none; ">
+	<br>
+	
+</div>
+
+
+
+<table id="table" style="display: none; " align="center">
+	
+	<thead>
+	  <tr>
+		<th align="left">Taxe name</th>
+		<th align="left">Unit</th>
+		<th align="left"></th>
+
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+		<td>Landing</td>
+		<td>per landing</td>
+		<td id="landing" align="left">0</td>
+	  </tr>
+	  <tr>
+		<td></td>
+		<td></td>
+		<td align="left">0</td>
+	  </tr>
+	  <tr>
+		<td>Approach</td>
+		<td>per movement</td>
+		<td align="left">0</td>
+	  </tr>
+	  <tr>
+		<td>Lighting</td>
+		<td>per use</td>
+		<td align="left"></td>
+	  </tr>
+	  <tr>
+		<td>PAX Tax (Dest: Europe & Africa)</td>
+		<td>per Passenger embarked</td>
+		<td align="left"></td>
+	  </tr>
+      <tr>
+		<td>PAX Tax (Dest: America & M.East)</td>
+		<td>per Passenger embarked</td>
+		<td align="left"></td>
+	  </tr>
+          <tr>
+		<td>Security Tax </td>
+		<td>per Passenger embarked</td>
+		<td align="left"></td>
+	  </tr> 
+	  <tr>
+		<td>CUTE Charge</td>
+		<td>per Passenger at departure</td>
+		<td align="left"></td>
+	  </tr>
+	  <tr>
+		<td>Air Tax for Solidarity & Tourism Promotion (T.A.S.P.T)</td>
+		<td>per Passenger embarked</td>
+		<td align="left"></td>
+	  </tr>
+
+	  <tr>
+		<td>Jetway Fee if used</td>
+		<td>per movement</td>
+		<td align="left"></td>
+	  </tr>
+      <tr id="week-end">
+		<td>Week-end surcharge</td>
+		<td>----</td>
+		<td align="left">Not applicable</td>
+	  </tr>
+
+	  <tr id="overnight">
+		<td >Overnight  </td>
+		<td>----</td>
+		<td align="left">Not applicable</td>
+	  </tr>
+	  <tr id="extra">
+		<td>Other Extra charges </td>
+		<td>----</td>
+		<td align="left">Not applicable</td>
+	  </tr>
+	</tbody>
+
+  </table>
+ <!--  Div text pour message dessous table-->
+
+
+
+  <!--  Bootstrap alert-->
+
+  <!--class="table table-dark" -->
+ <br> 
+  <table style="display: none " id="table-result" " align="center" >
+	<thead>
+	  <tr>
+		
+		<th scope="col">PAX Destination</th>
+		<th scope="col">Number of PAX</th>
+		<th scope="col">Parking duration</th>
+		<th scope="col">Lighting times</th>
+		<th scope="col">Jetway Use</th>
+		
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	  </tr>
+	 
+	</tbody>
+  </table> 
+ <!-- End boostrap Alert-->
+
+ <div id ="result" class="alert alert-success" role="alert" style="text-align:center" style="display: none " >
+	<h2 style="display: none " id="h1-result-budget"></h2>
+  </div>	
+
+  <div style="text-align:center" style="display: none " >
+	<button style="display: none " id="reset" class="btn btn-primary btn-lg"  onclick=recalculate() ><< Back     </button>
+	<button style="display: none " id="print-display" class="btn btn-primary btn-lg"  onclick=printR() > Print    </button>
+    <button style="display: none " id="quote-display" class="btn btn-primary btn-lg"  onclick=window.location.replace("index.html") > Exit     </button>
+</div>
+
+  <br><br>
+  <div style="text-align:center" >
+
+  <button style="display: none" id="exit1" class="btn btn-primary btn-lg" onclick=back() ><< Back </button> 
+  <button  id="submit2" class="btn btn-primary btn-lg" style="display: none; ">Simulation </button>
+
+ <button  id="print" class="btn btn-primary btn-lg" onclick=printQ() >Print Quotation </button> 
+ 
+</div>
+
+	<div id="booking" class="section" ><br><br>
+		
+		<div> <!--<div class="section-center" >-->
+
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+
+						<form >
+                           
+                            <div class="col-md-2">
+								<div class="form-group">
+									<select  class="form-control" id="station1" required >
+										<option  id="none" ></option>
+                                                                           
+                                        <option  id="GMMN"  >GMMN</option>
+										<option  id="GMMX" >GMMX</option>
+                                        <option id="GMME"  >GMME</option>
+										<option id="GMTT"  >GMTT</option>
+										<option id="GMAD"  >GMAD</option>
+										<option id="GMMZ"  >GMMZ</option>
+										<option id="GMFF"  >GMFF</option>
+										<option id="GMFK"  >GMFK</option>
+										<option id="GMFO"  >GMFO</option>
+										<option id="GMMI"  >GMMI</option>
+										<option id="GMML"  >GMML</option>
+										<option id="GMMH"  >GMMH</option>
+										<option id="GMTA"  >GMTA</option>
+										<option id="GMTN"  >GMTN</option>
+					
+									</select>
+									<span class="select-arrow"></span>
+									<span class="form-label">Airport</span>
+								</div>
+							        </div>
+
+                                <div class="col-md-2">
+								<div class="form-group">
+									<select id="mtow-unit"class="form-control" required>
+										<option id="none2" > </option>
+										<option id="ton">Tons</option>
+                                        <option id="lbs">Lbs</option>
+										<option id="kgs">Kgs</option>
+										
+									</select>
+									<span class="select-arrow"></span>
+									<span class="form-label">MTOW Unit</span>
+								</div>
+							        </div>
+
+							<div class="col-md-2">
+								<div class="form-group">
+									<input id="mtow1" class="form-control" type="text"  required>
+									<span class="form-label">MTOW</span>
+								</div>
+							</div>
+
+                              	<div class="col-md-2">
+								<div class="form-group">
+									<select class="form-control" id="currency" required>
+										<option ></option>
+                                        <option id="USD" value="USD">USD</option>
+										<option id="EUR" value="EUR">EUR</option>
+                                       <option id="MAD" value="MAD">MAD</option>
+										
+									</select>
+									<span class="select-arrow"></span>
+									<span class="form-label">Currency</span>
+								</div>
+							        </div>
+
+							<div class="col-md-4">
+								<div class="form-btn">
+									<button  id="submit" class="submit-btn">Get Quote</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- END BLOCK AIRPORT TAXES -->
+
+	<div id="booking2" class="section" style="display: none; ">
+	
+		 <br>
+
+		<div id ="calculator" ><div> <!--<div id ="calculator" class="section-center" >-->
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+
+						<form id="haut" >
+
+							<div class="col-md-3">
+								<div class="form-group">
+									<select id="paxDest" class="form-control" required>
+										<option ></option>
+                                        <option id="tons-calculator">America & M.East</option>
+										<option  id="lbs-calculator">Europe & Africa</option>
+										
+										
+									</select>
+									<span class="select-arrow"></span>
+									<span class="form-label">PAX Destination</span>
+								</div>
+							   </div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<input id="paxNbr" class="form-control" type="text" placeholder="Value" required>
+									<span class="form-label">PAX Number</span>
+								</div>
+							</div>
+
+                              
+
+                               <div class="col-md-2">
+								<div class="form-group">
+									<input id="parking-calculator" class="form-control" type="text" placeholder="duration" required>
+									<span id="span" class="form-label"> </span>
+								</div>
+							</div>
+
+
+
+						
+							<div class="col-md-1">
+								<div class="form-group">
+									<select id="lighting-calculator" class="form-control" required>
+										<option > </option>
+                                        <option>0</option>
+										<option>1</option>
+										<option>2</option>
+									</select>
+									<span class="select-arrow"></span>
+									<span class="form-label">Lighting times </span>
+								</div>
+							</div>
+							
+							<div class="col-md-1">
+								<div class="form-group">
+									<select id="jetway" class="form-control" required>
+										<option > </option>
+                                        <option>0</option>
+										<option>1</option>
+										<option>2</option>
+									
+									</select>
+									<span class="select-arrow"></span>
+									<span class="form-label">Jetway Use </span>
+								</div>
+							</div>  
+
+							<div class="col-md-3">
+								<div class="form-btn">
+									<button id="submit-calculator" class="submit-btn" onsubmit=check(e)>Get Budget</button>
+								</div>
+							</div>
+						</form>
+						
+					</div>
+				
+					 <table id="table" style="display: none; " align="center">
+	
+						<thead>
+						  <tr>
+							<th align="left">Taxe name</th>
+							<th align="left">Unit</th>
+							<th align="left"></th>
+					
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<td>Landing</td>
+							<td>per landing</td>
+							<td id="landing" align="left">0</td>
+						  </tr>
+						  <tr>
+							<td></td>
+							<td></td>
+							<td align="left">0</td>
+						  </tr>
+						  <tr>
+							<td>Approach</td>
+							<td>per movement</td>
+							<td align="left">0</td>
+						  </tr>
+						  <tr>
+							<td>Lighting</td>
+							<td>per use</td>
+							<td align="left"></td>
+						  </tr>
+						  <tr>
+							<td>PAX Tax (Dest: Europe & Africa)</td>
+							<td>per Passenger</td>
+							<td align="left"></td>
+						  </tr>
+							   <tr>
+							<td>PAX Tax (Dest: America & M.East)</td>
+							<td>per Passenger</td>
+							<td align="left"></td>
+						  </tr>
+							  <tr>
+							<td>Security Tax </td>
+							<td>per Passenger</td>
+							<td align="left"></td>
+						  </tr> 
+						  <tr>
+							<td>Week-end surcharge</td>
+							<td>NIL</td>
+							<td align="left">NIL</td>
+						  </tr>
+						  <tr>
+							<td>Overnight  </td>
+							<td>NIL</td>
+							<td align="left">NIL</td>
+						  </tr>
+						  <tr>
+							<td>Other Extra charges </td>
+							<td>NIL</td>
+							<td align="left">NIL</td>
+						  </tr>
+						</tbody>
+					
+					  </table>
+			 
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<script src="js/app-charter.js"></script> 
+</html>
