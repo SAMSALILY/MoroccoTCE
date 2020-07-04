@@ -216,11 +216,6 @@ var flightType
           document.getElementById("table-result").style.display ="";
           event.preventDefault();
 
-       
-         
-     
-         
-         
           var weightUnit=document.getElementById('weight-unit').value;
           var weight=document.getElementById('weight').value;
          var parkingCalc=document.getElementById('parking-calculator').value;
@@ -269,34 +264,9 @@ var flightType
        
               
       })
-        
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
+       
        })
-   
-     
-
-
-
-	
-	  fetch("./netlify/functions/quote", {
+    fetch("/.netlify/functions/quote", {
 		method: 'POST',
 		headers: {
 		Accept: "application/json",
